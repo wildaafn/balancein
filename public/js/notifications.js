@@ -40,7 +40,14 @@ const Notifications = (() => {
 
   async function requestPermission(silent = false) {
     if (!isSupported()) {
-      if (!silent) showToast('Browser kamu belum mendukung notifikasi', 'warning');
+      if (!silent) {
+        const isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
+        if (isIos) {
+          showToast('🍏 Untuk iPhone: Tap ikon Share lalu "Add to Home Screen" agar notifikasi bisa aktif!', 'warning', 6000);
+        } else {
+          showToast('Browser kamu belum mendukung notifikasi', 'warning');
+        }
+      }
       return false;
     }
 
