@@ -1,0 +1,17 @@
+{
+  "name": "balancein",
+  "version": "1.0.0",
+  "description": "BalanceIn — Holistic Life Balance Reminder PWA (Health, Mental, Spiritual)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["pwa", "health", "reminder", "islamic", "balance", "gemini-ai"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.0",
+    "@google/generative-ai": "^0.21.0"
+  }
+}

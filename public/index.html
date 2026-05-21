@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="BalanceIn — Jaga keseimbangan hidup: kesehatan fisik, mental, dan ibadah Islam. Dengan AI Coach yang memahami kamu.">
+  <meta name="theme-color" content="#0D9F6E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="BalanceIn">
+
+  <title>BalanceIn — Life Balance Reminder</title>
+
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/png" href="/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+
+  <link rel="stylesheet" href="/css/index.css">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+
+  <!-- Splash Screen -->
+  <div id="splash-screen" class="splash-screen">
+    <div class="splash-content">
+      <div class="splash-logo">
+        <div class="splash-icon">☯</div>
+        <div class="splash-ring"></div>
+      </div>
+      <h1 class="splash-title">BalanceIn</h1>
+      <p class="splash-subtitle">Body · Mind · Soul</p>
+      <div class="splash-loader">
+        <div class="splash-loader-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="app">
+    <!-- Header -->
+    <header class="app-header" id="app-header">
+      <div class="app-logo">
+        <div class="app-logo-icon">☯</div>
+        <span class="app-logo-text">BalanceIn</span>
+      </div>
+      <div class="header-actions">
+        <button class="header-btn" id="btn-notifications" aria-label="Notifications" title="Aktifkan Notifikasi">🔔</button>
+      </div>
+    </header>
+
+    <!-- Install Banner (shown when installable) -->
+    <div class="install-banner hidden" id="install-banner">
+      <span style="font-size:1.3rem">📲</span>
+      <span class="install-banner-text">Install BalanceIn untuk pengalaman terbaik!</span>
+      <button class="install-banner-btn" id="btn-install">Install</button>
+      <button class="install-banner-close" id="btn-install-close">✕</button>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Main Content Views -->
+    <main class="app-content" id="main-content">
+
+      <!-- Dashboard View -->
+      <div class="view active" id="view-dashboard"></div>
+
+      <!-- Health View -->
+      <div class="view" id="view-health"></div>
+
+      <!-- Spiritual View -->
+      <div class="view" id="view-spiritual"></div>
+
+      <!-- Breathing View -->
+      <div class="view" id="view-breathing"></div>
+
+      <!-- AI Coach View -->
+      <div class="view" id="view-ai"></div>
+
+      <!-- Settings View -->
+      <div class="view" id="view-settings"></div>
+
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav" id="bottom-nav">
+      <button class="nav-item active" data-view="dashboard" id="nav-dashboard">
+        <span class="nav-item-icon">🏠</span>
+        <span>Beranda</span>
+      </button>
+      <button class="nav-item" data-view="health" id="nav-health">
+        <span class="nav-item-icon">💪</span>
+        <span>Sehat</span>
+      </button>
+      <button class="nav-item" data-view="spiritual" id="nav-spiritual">
+        <span class="nav-item-icon">🕌</span>
+        <span>Ibadah</span>
+      </button>
+      <button class="nav-item" data-view="ai" id="nav-ai">
+        <span class="nav-item-icon">🤖</span>
+        <span>AI Coach</span>
+      </button>
+      <button class="nav-item" data-view="settings" id="nav-settings">
+        <span class="nav-item-icon">⚙️</span>
+        <span>Setelan</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- SVG Defs for gradients (used by balance ring) -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <linearGradient id="balanceGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#0D9F6E" />
+        <stop offset="50%" style="stop-color:#10B981" />
+        <stop offset="100%" style="stop-color:#34D399" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Scripts -->
+  <script src="/js/storage.js"></script>
+  <script src="/js/notifications.js"></script>
+  <script src="/js/onboarding.js"></script>
+  <script src="/js/breathing.js"></script>
+  <script src="/js/dashboard.js"></script>
+  <script src="/js/health.js"></script>
+  <script src="/js/spiritual.js"></script>
+  <script src="/js/ai-coach.js"></script>
+  <script src="/js/settings.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
