@@ -148,14 +148,7 @@ const App = (() => {
         const registration = await navigator.serviceWorker.register('/sw.js');
         console.log('✅ Service Worker registered:', registration.scope);
 
-        registration.addEventListener('updatefound', () => {
-          const newWorker = registration.installing;
-          newWorker.addEventListener('statechange', () => {
-            if (newWorker.state === 'activated') {
-              Notifications.showToast('🔄 Aplikasi diperbarui! Refresh untuk versi terbaru.', 'info');
-            }
-          });
-        });
+        // Update notification removed per user request
       } catch (error) {
         console.error('Service Worker registration failed:', error);
       }
