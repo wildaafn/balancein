@@ -38,9 +38,9 @@ const Notifications = (() => {
     return isSupported() ? Notification.permission : 'denied';
   }
 
-  async function requestPermission() {
+  async function requestPermission(silent = false) {
     if (!isSupported()) {
-      showToast('Browser kamu belum mendukung notifikasi', 'warning');
+      if (!silent) showToast('Browser kamu belum mendukung notifikasi', 'warning');
       return false;
     }
 
@@ -49,7 +49,7 @@ const Notifications = (() => {
     }
 
     if (Notification.permission === 'denied') {
-      showToast('Notifikasi diblokir. Aktifkan di pengaturan browser.', 'warning');
+      if (!silent) showToast('Notifikasi diblokir. Aktifkan di pengaturan browser.', 'warning');
       return false;
     }
 
@@ -60,7 +60,7 @@ const Notifications = (() => {
       return true;
     }
 
-    showToast('Notifikasi tidak diizinkan', 'info');
+    if (!silent) showToast('Notifikasi tidak diizinkan', 'info');
     return false;
   }
 

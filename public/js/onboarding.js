@@ -8,9 +8,9 @@ const Onboarding = (() => {
 
   const steps = [
     {
-      icon: '☯',
-      title: 'Selamat Datang di BalanceIn',
-      desc: 'Aplikasi yang membantu kamu menjaga keseimbangan hidup antara tubuh, pikiran, dan hati.',
+      icon: '<img src="/icons/icon-192.png" style="width:48px; height:48px; object-fit:contain;" alt="Logo">',
+      title: 'Selamat datang di BalanceIn',
+      desc: 'Aplikasi yang membantumu menjaga keseimbangan hidup antara kesehatan fisik, mental, dan ibadah.',
       visual: 'logo',
     },
     {
@@ -177,7 +177,7 @@ const Onboarding = (() => {
 
     // Request notification permission after onboarding
     setTimeout(() => {
-      Notifications.requestPermission();
+      Notifications.requestPermission(true);
     }, 2000);
   }
 

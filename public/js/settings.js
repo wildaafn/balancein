@@ -190,7 +190,7 @@ const Settings = (() => {
       <div class="settings-group">
         <div class="settings-group-title">ℹ️ Tentang</div>
         <div class="card" style="text-align:center;">
-          <div style="font-size:2rem;margin-bottom:8px;">☯</div>
+          <div style="margin-bottom:8px;"><img src="/icons/icon-192.png" style="width:48px; height:48px; object-fit:contain;" alt="Logo"></div>
           <div style="font-family:var(--font-heading);font-weight:700;font-size:1.2rem;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">BalanceIn</div>
           <div style="font-size:0.8rem;color:var(--text-secondary);margin-top:4px;">v1.0.0 — Life Balance Reminder</div>
           <div style="font-size:0.75rem;color:var(--text-tertiary);margin-top:8px;">

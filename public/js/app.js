@@ -94,26 +94,34 @@ const App = (() => {
     currentView = viewName;
     window.location.hash = viewName;
 
-    // Update nav (exclude breathing from bottom nav)
-    document.querySelectorAll('.nav-item').forEach((item) => {
-      item.classList.toggle('active', item.dataset.view === viewName);
-    });
+    const updateDOM = () => {
+      // Update nav (exclude breathing from bottom nav)
+      document.querySelectorAll('.nav-item').forEach((item) => {
+        item.classList.toggle('active', item.dataset.view === viewName);
+      });
 
-    // Show/hide views
-    document.querySelectorAll('.view').forEach((view) => {
-      view.classList.remove('active');
-    });
+      // Show/hide views
+      document.querySelectorAll('.view').forEach((view) => {
+        view.classList.remove('active');
+      });
 
-    const viewEl = document.getElementById(`view-${viewName}`);
-    if (viewEl) {
-      viewEl.classList.add('active');
+      const viewEl = document.getElementById(`view-${viewName}`);
+      if (viewEl) {
+        viewEl.classList.add('active');
+      }
+
+      // Render
+      renderCurrentView();
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    };
+
+    if (document.startViewTransition) {
+      document.startViewTransition(() => updateDOM());
+    } else {
+      updateDOM();
     }
-
-    // Render
-    renderCurrentView();
-
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'instant' });
   }
 
   function renderCurrentView() {
