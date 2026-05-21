@@ -84,9 +84,37 @@ app.get('/api/prayer-times', async (req, res) => {
   }
 });
 
+// --- Rate Limiter ---
+const chatRateLimits = new Map();
+const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
+const MAX_REQUESTS = 5;
+
+function checkRateLimit(ip) {
+  const now = Date.now();
+  const record = chatRateLimits.get(ip) || { count: 0, lastReset: now };
+  
+  if (now - record.lastReset > RATE_LIMIT_WINDOW) {
+    record.count = 1;
+    record.lastReset = now;
+  } else {
+    record.count++;
+  }
+  
+  chatRateLimits.set(ip, record);
+  return record.count <= MAX_REQUESTS;
+}
+
 // Gemini AI Chat
 app.post('/api/ai/chat', async (req, res) => {
   try {
+    const clientIp = req.ip || req.connection.remoteAddress;
+    if (!checkRateLimit(clientIp)) {
+      return res.status(429).json({
+        error: 'Terlalu banyak permintaan',
+        fallback: 'Kamu bertanya terlalu cepat. Tunggu sebentar ya biar saya bisa bernapas! 🧘‍♂️ (Limit: 5 pesan / menit)',
+      });
+    }
+
     const { message, context } = req.body;
 
     if (!message) {
@@ -126,10 +154,10 @@ app.post('/api/ai/chat', async (req, res) => {
       response: response,
     });
   } catch (error) {
-    console.error('AI Chat error:', error);
+    console.error('AI Chat error:', error.message || error);
     res.status(500).json({
       error: 'Gagal menghubungi AI Coach',
-      fallback: 'Maaf, terjadi gangguan. Coba lagi nanti ya! 🙏',
+      fallback: 'Maaf, terjadi gangguan pada server AI (mungkin limit API tercapai). Coba lagi nanti ya! 🙏',
     });
   }
 });
