@@ -171,6 +171,7 @@ const Dashboard = (() => {
     }
 
     // Checklists moved to their respective tabs.
+  }
 
   return { render };
 })();

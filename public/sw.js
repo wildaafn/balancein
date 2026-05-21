@@ -1,4 +1,4 @@
-const CACHE_NAME = 'balancein-v3';
+const CACHE_NAME = 'balancein-v4';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
