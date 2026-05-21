@@ -157,11 +157,25 @@ const App = (() => {
 
   // --- PWA Install ---
   function handleInstallPrompt() {
+    // Standard Android/Desktop prompt
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredInstallPrompt = e;
       showInstallBanner();
     });
+
+    // Detect iOS Safari
+    const isIos = () => {
+      const userAgent = window.navigator.userAgent.toLowerCase();
+      return /iphone|ipad|ipod/.test(userAgent);
+    };
+    // Detect if running in standalone mode (already installed)
+    const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+
+    // If on iOS and not installed, show iOS specific prompt
+    if (isIos() && !isInStandaloneMode()) {
+      showIosInstallBanner();
+    }
 
     window.addEventListener('appinstalled', () => {
       deferredInstallPrompt = null;
@@ -193,6 +207,18 @@ const App = (() => {
 
     if (closeBtn) {
       closeBtn.addEventListener('click', () => hideInstallBanner());
+    }
+  }
+
+  function showIosInstallBanner() {
+    const banner = document.getElementById('ios-install-banner');
+    if (banner) banner.classList.remove('hidden');
+
+    const closeBtn = document.getElementById('btn-ios-install-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        if (banner) banner.classList.add('hidden');
+      });
     }
   }
 
