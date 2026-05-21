@@ -11,6 +11,7 @@ const App = (() => {
   const views = {
     dashboard: { module: Dashboard, title: 'Beranda' },
     health: { module: Health, title: 'Kesehatan' },
+    mental: { module: Mental, title: 'Mental' },
     spiritual: { module: Spiritual, title: 'Ibadah' },
     breathing: { module: Breathing, title: 'Pernapasan' },
     ai: { module: AICoach, title: 'AI Coach' },

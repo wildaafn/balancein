@@ -76,13 +76,21 @@
       <!-- Breathing View -->
       <div class="view" id="view-breathing"></div>
 
-      <!-- AI Coach View -->
+      <!-- Mental View -->
+      <div class="view" id="view-mental"></div>
+
+      <!-- AI Coach View (hidden by default, triggered by FAB) -->
       <div class="view" id="view-ai"></div>
 
       <!-- Settings View -->
       <div class="view" id="view-settings"></div>
 
     </main>
+
+    <!-- AI Coach FAB -->
+    <button class="ai-fab" id="btn-ai-fab" aria-label="AI Coach" onclick="App.navigateTo('ai')">
+      <span class="ai-fab-icon">🤖</span>
+    </button>
 
     <!-- Bottom Navigation -->
     <nav class="bottom-nav" id="bottom-nav">
@@ -98,9 +106,9 @@
         <span class="nav-item-icon">🕌</span>
         <span>Ibadah</span>
       </button>
-      <button class="nav-item" data-view="ai" id="nav-ai">
-        <span class="nav-item-icon">🤖</span>
-        <span>AI Coach</span>
+      <button class="nav-item" data-view="mental" id="nav-mental">
+        <span class="nav-item-icon">🧠</span>
+        <span>Mental</span>
       </button>
       <button class="nav-item" data-view="settings" id="nav-settings">
         <span class="nav-item-icon">⚙️</span>
@@ -127,6 +135,7 @@
   <script src="/js/breathing.js"></script>
   <script src="/js/dashboard.js"></script>
   <script src="/js/health.js"></script>
+  <script src="/js/mental.js"></script>
   <script src="/js/spiritual.js"></script>
   <script src="/js/ai-coach.js"></script>
   <script src="/js/settings.js"></script>

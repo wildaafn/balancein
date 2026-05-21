@@ -244,6 +244,33 @@ input, textarea, select { font-family: inherit; outline: none; }
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* --- AI Coach FAB --- */
+.ai-fab {
+  position: fixed;
+  bottom: calc(var(--nav-height) + var(--space-md));
+  right: var(--space-md);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px var(--color-health-glow);
+  z-index: 150;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ai-fab:active {
+  transform: scale(0.9);
+}
+
+.ai-fab-icon {
+  font-size: 1.5rem;
+}
+
 /* --- Bottom Navigation --- */
 .bottom-nav {
   position: fixed;
